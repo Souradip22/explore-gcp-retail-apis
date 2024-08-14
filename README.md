@@ -41,7 +41,7 @@ Next, I will break down each step and provide a simple Python script to call the
 
    - First, you'll need to create a project. Follow the steps provided [here](https://developers.google.com/workspace/guides/create-project).
 
-   ![Create a Project](./create-project.png)
+   ![Create a Project](./images/create-project.png)
 
 2. **Enable APIs for Retail Search:**
    - After creating the project, you'll need to enable the APIs required for your use case. This is a standard procedure for accessing various Google services.
@@ -73,13 +73,13 @@ Next, I will break down each step and provide a simple Python script to call the
    - **Important:** Ensure you select the correct role; otherwise, you might encounter an **Access Forbidden** error.
    - For comprehensive retail operations, I will assign **Full Admin Access** to this service account.
 
-![Service Account Creation](./service-account.png)
+![Service Account Creation](./images/service-account.png)
 
 5. **Generate API Keys:**
    - Click on the newly created service account and then go to the **KEYS** tab.
    - Next, click on **ADD KEYS** → **Create new Key**.
 
-![Create a Private Key](./create-private-key.png)
+![Create a Private Key](./images/create-private-key.png)
 
 - Keep the key type as **JSON** and then click on **Create**. A JSON file will automatically be downloaded. This file contains all the information needed to authenticate your backend servers, which we will use later.
 
@@ -92,19 +92,19 @@ For this section, I have already stored data in BigQuery and Cloud Storage using
    - I used `catalog_data.json`, which follows the schema outlined in `SCHEMA.json`. You can use any product data, but it must match the schema that the Retail API can ingest.
    - For more details on the required schema, refer to the [Retail API documentation](https://cloud.google.com/retail/docs/catalog).
 
-   ![Catalog Data Import](./Import-product-catalog-data.png)
+   ![Catalog Data Import](./images/Import-product-catalog-data.png)
 
 2. **User Events Data:**
 
    - I used `recent_retail_events.json` and imported it using a similar approach through Cloud Storage.
 
-   ![Import User Events Data](./Import-product-catalog-data.png)
+   ![Import User Events Data](./images/Import-product-catalog-data.png)
 
-> **Note:** You can use any product data, but it must be in a schema format that the Retail API expects. This falls within the scope of the ETL process, which is not covered here.
+> **Note:** You can use any product data, but it must adhere to the schema format expected by the Retail API. The data ingestion process is part of the ETL (Extract, Transform, Load) process and is not covered here. For this project, you can use the sample product data and user events data provided, which is attached within the project files.
 
 Once you successfully import the data, you can view it in the data tab as shown below:
 
-![Imported Data](./imported-data.png)
+![Imported Data](./images/imported-data.png)
 
 ---
 
@@ -216,12 +216,58 @@ To demonstrate how to fetch data from the Retail API endpoints, I've created a s
 
 Once you run the script from the command line, you can view the output as shown below:
 
-![Sample Output](./sample-output.png)
+![Sample Output](./images/sample-output.png)
 
 **Troubleshooting:**
 
 If you encounter any issues, you can follow the troubleshooting guide provided [here](https://cloud.google.com/retail/docs/retail-api-tutorials-troubleshooting).
 
-```
+## Next Steps: Exploring Search Options with Retail API
 
-```
+### 1. **Simple Search Query**
+
+- Perform basic text search queries to find products or data.
+
+### 2. **Search with Boost**
+
+- Enhance the relevance of search results by boosting certain attributes or fields.
+
+### 3. **Search with Facets**
+
+- Use facets to refine search results by categories or attributes (e.g., price ranges, brands).
+
+### 4. **Search with Filtering**
+
+- Apply filters to search results based on specific criteria (e.g., price, availability).
+
+### 5. **Search with Ordering**
+
+- Order search results by specific criteria (e.g., price ascending/descending, newest first).
+
+### 6. **Search with Pagination**
+
+- Implement pagination to handle large sets of search results by splitting them into pages.
+
+### 7. **Image Search (Using Vision API)**
+
+- Integrate with the Vision API to perform searches based on images.
+
+### 8. **Recommendations (Using Retail Recommendation API)**
+
+- Use the Retail Recommendation API to provide personalized product recommendations.
+
+Explore other options like:
+
+- **Synonym Search**
+
+- **Fuzzy Search**
+
+- **Personalized Searches**
+
+- **Query Suggestion and Autocomplete**
+
+- **Semantic Search**
+
+---
+
+For more details and to test these features, refer to the [Retail API documentation](https://cloud.google.com/retail/docs) and the relevant sections on the specific capabilities of the API.
